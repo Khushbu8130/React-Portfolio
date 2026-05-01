@@ -123,7 +123,7 @@ const Hero = () => {
             </a>
 
             <a
-              href="/resume.pdf"
+              href="https://drive.google.com/file/d/1FqrvnGX7-_RMjn9rQCBUlsgRCN17IL3c/view?usp=sharing"
               className="px-6 py-2 border border-purple-500 rounded-lg hover:bg-purple-500/10 transition"
             >
               Download Resume
