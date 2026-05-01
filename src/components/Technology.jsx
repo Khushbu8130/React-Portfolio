@@ -4,6 +4,7 @@ import {
   DiHtml5,
   DiJava,
   DiPython,
+    DiJavascript1,
 } from "react-icons/di"
 import {
   IoLogoCss3,
@@ -47,6 +48,7 @@ const container = {
 const techStack = [
   { icon: <DiHtml5 />, name: "HTML", color: "text-orange-500" },
   { icon: <IoLogoCss3 />, name: "CSS", color: "text-blue-400" },
+    { icon: <DiJavascript1 />, name: "JavaScript", color: "text-yellow-400" }, 
   { icon: <RiReactjsLine />, name: "React", color: "text-cyan-400" },
   { icon: <FaNodeJs />, name: "Node.js", color: "text-green-500" },
   { icon: <SiMongodb />, name: "MongoDB", color: "text-green-400" },

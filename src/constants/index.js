@@ -51,7 +51,7 @@ export const PROJECTS = [
     description:
       "File management tool for PDF compression, conversion, and merging.",
     technologies: ["React", "Node.js", "Express", "MongoDB"],
-    link: "https://protonpdf-2.onrender.com",
+    link: "https://protonpdf.onrender.com/",
   },
   {
     title: "BookHavan",
@@ -59,7 +59,7 @@ export const PROJECTS = [
     description:
       "Platform for engineering students to access and download books.",
     technologies: ["React", "Node.js", "MongoDB"],
-    link: "https://drive.google.com/file/d/1uBs4GQd4ArM8JOP3oE9IMbYS_gYo8z6M/view",
+    link: "https://bookhavenn.onrender.com/",
   },
   {
     title: "Recruitment System",
@@ -81,31 +81,40 @@ export const PROJECTS = [
 
 // CERTIFICATIONS
 export const CERTIFICATIONS = [
-  {
-    title: "Cloud Computing",
-    description: "NPTEL certification on cloud architecture.",
-    technologies: ["Cloud"],
-    link: "#",
+    {
+    title: "Cloud Computing – NPTEL (IIT Kharagpur)",
+    description:
+      "Elite certification covering cloud architecture, XaaS models, data management, and cloud security.",
+    technologies: ["Cloud", "XaaS", "Security"],
     image: cloudImg,
+    link: "https://drive.google.com/file/d/1L22l4cwqEwf55vy83e3Z_0U2O6JtloNz/view",
   },
   {
-    title: "Full Stack Development",
-    description: "MERN stack course completion.",
-    technologies: ["MERN"],
-    link: "#",
+    title: "Full Stack Web Development",
+    description:
+      "Completed full-stack development course covering modern frontend and backend technologies including MERN stack.",
+    technologies: ["React", "Node.js", "MongoDB"],
     image: fullstackImg,
+    link: "https://drive.google.com/file/d/1u64QXCjiY_akUElwYmiLMitqAtM5DdX4/view",
   },
   {
-    title: "Python Programming",
-    description: "Python fundamentals certification.",
+    title: "Programming for Everybody (Python)",
+    description:
+      "Completed Python fundamentals course by University of Michigan, focusing on programming basics and problem-solving.",
     technologies: ["Python"],
-    link: "#",
     image: pythonImg,
+    link: "https://drive.google.com/file/d/1X4PClhVLKQKF-hlGUsXs_Wad2UDvThv1/view",
   },
 ];
 
 // ACHIEVEMENTS
 export const ACHIEVEMENTS = [
+   {
+    title: "Special Recognition – Agentic AI Project",
+    description:
+      "Recognized for building an innovative Agentic AI project under FFE-TiE Entrepreneurship Program (2025).",
+    technologies: ["AI", "Innovation"],
+  },
   {
     title: "DSA Problem Solving",
     description: "Solved 600+ problems on coding platforms.",
@@ -115,6 +124,24 @@ export const ACHIEVEMENTS = [
     title: "Open Source",
     description: "Contributed in Hacktoberfest & GSSoC.",
     technologies: ["GitHub", "Open Source", "Community"],
+  },
+    {
+    title: "Amazon Future Engineer (AFE)",
+    description:
+      "Selected among top 500 out of 8000+ applicants.",
+    technologies: ["Competitive"],
+  },
+  {
+    title: "FFE Star Mentee",
+    description:
+      "Recognized for consistent academic performance (2024–25).",
+    technologies: ["Leadership"],
+  },
+  {
+    title: "Tech Lead – Final Year Project",
+    description:
+      "Led development of a MERN stack application managing frontend, backend, and APIs.",
+    technologies: ["Leadership", "MERN"],
   },
 ];
 
