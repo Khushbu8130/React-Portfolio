@@ -1,118 +1,118 @@
 import React from 'react'
-import { DiHtml5 } from "react-icons/di";
-import { IoLogoCss3 } from "react-icons/io5";
-import { RiReactjsLine } from 'react-icons/ri'
-import { SiMongodb } from 'react-icons/si'
-import { DiJava } from "react-icons/di";
-import { FaNodeJs } from 'react-icons/fa'
-import { DiPython } from "react-icons/di";
 import { motion } from 'framer-motion'
-import { TbCloudComputing } from "react-icons/tb";
-import { FaSalesforce } from "react-icons/fa";
+import {
+  DiHtml5,
+  DiJava,
+  DiPython,
+} from "react-icons/di"
+import {
+  IoLogoCss3,
+} from "react-icons/io5"
+import {
+  RiReactjsLine,
+} from "react-icons/ri"
+import {
+  SiMongodb,
+} from "react-icons/si"
+import {
+  FaNodeJs,
+  FaSalesforce,
+} from "react-icons/fa"
+import { TbCloudComputing } from "react-icons/tb"
 
+// Smooth animation
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
+}
 
-const iconVariants = (duration) => ({
-    initial: { y: -10 },
-    animate: {
-        y: [10, -10],
-        transition: {
-            duration: duration,
-            ease: "linear",
-            repeat: Infinity,
-            repeatType: "reverse",
-        }
-    }
-})
+// Stagger container
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+}
+
+// Tech list
+const techStack = [
+  { icon: <DiHtml5 />, name: "HTML", color: "text-orange-500" },
+  { icon: <IoLogoCss3 />, name: "CSS", color: "text-blue-400" },
+  { icon: <RiReactjsLine />, name: "React", color: "text-cyan-400" },
+  { icon: <FaNodeJs />, name: "Node.js", color: "text-green-500" },
+  { icon: <SiMongodb />, name: "MongoDB", color: "text-green-400" },
+  { icon: <DiJava />, name: "Java", color: "text-orange-400" },
+  { icon: <DiPython />, name: "Python", color: "text-yellow-400" },
+  { icon: <TbCloudComputing />, name: "Cloud", color: "text-sky-400" },
+  { icon: <FaSalesforce />, name: "Salesforce", color: "text-blue-500" },
+]
+
 const Technology = () => {
-    return (
-        <div className='border-b border-neutral-800 pb-24'>
-            <motion.h1
-                whileInView={{ opacity: 1, y: 0 }}
-                initial={{ opacity: 0, y: -100 }}
-                transition={{ duration: 1.5 }}
-                className='my-20 text-center text-4xl'>Technologies </motion.h1>
-            <motion.div
-                whileInView={{ opacity: 1, x: 0 }}
-                initial={{ opacity: 0, x: -100 }}
-                transition={{ duration: 1.5 }}
+  return (
+    <motion.section
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, margin: "-80px" }}
+      className="py-16 border-b border-neutral-800"
+    >
 
-                className='flex flex-wrap items-center justify-center gap-4'>
-                <motion.div
+      {/* Heading */}
+      <motion.h1
+        variants={fadeInUp}
+        className="text-center text-3xl font-semibold mb-4"
+      >
+        My <span className="text-purple-400">Tech Stack</span>
+      </motion.h1>
 
-                    variants={iconVariants(2.5)}
-                    initial='initial'
-                    animate='animate'
-                    className='rounded-2xl border-4 border-neutral-800 p-4'>
-                    <DiHtml5 className='text-7xl text-orange-600' />
-                </motion.div>
-                <motion.div
+      {/* Subtitle */}
+      <motion.p
+        variants={fadeInUp}
+        className="text-center text-sm text-neutral-400 mb-10"
+      >
+        Technologies I use to build scalable and modern applications
+      </motion.p>
 
-                    variants={iconVariants(3)}
-                    initial='initial'
-                    animate='animate'
-                    className='rounded-2xl border-4 border-neutral-800 p-4'>
-                    <IoLogoCss3 className='text-7xl text-blue-400' />
-                </motion.div>
-                <motion.div
-                    variants={iconVariants(6)}
-                    initial='initial'
-                    animate='animate'
-                    className='rounded-2xl border-4 border-neutral-800 p-4'>
-                    <FaNodeJs className='text-7xl text-green-500' />
-                </motion.div>
-                <motion.div
+      {/* Grid */}
+      <motion.div
+        variants={container}
+        className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-5 max-w-4xl mx-auto"
+      >
 
-                    variants={iconVariants(5.5)}
-                    initial='initial'
-                    animate='animate'
-                    className='rounded-2xl border-4 border-neutral-800 p-4'>
-                    <RiReactjsLine className='text-7xl text-cyan-400' />
-                </motion.div>
+        {techStack.map((tech, index) => (
+          <motion.div
+            key={index}
+            variants={fadeInUp}
+            whileHover={{ y: -5, scale: 1.05 }}
+            className="group flex flex-col items-center justify-center bg-neutral-900 border border-neutral-800 rounded-lg p-4 hover:border-purple-500/40 transition"
+          >
 
-                <motion.div
+            {/* Icon */}
+            <div className={`text-4xl ${tech.color} mb-2 group-hover:scale-110 transition`}>
+              {tech.icon}
+            </div>
 
-                    variants={iconVariants(4.5)}
-                    initial='initial'
-                    animate='animate'
-                    className='rounded-2xl border-4 border-neutral-800 p-4'>
-                    <SiMongodb className='text-7xl text-green-500' />
-                </motion.div>
-                <motion.div
+            {/* Name */}
+            <p className="text-xs text-neutral-400 group-hover:text-purple-400 transition">
+              {tech.name}
+            </p>
 
-                    variants={iconVariants(6.5)}
-                    initial='initial'
-                    animate='animate'
-                    className='rounded-2xl border-4 border-neutral-800 p-4'>
-                    <DiJava className='text-7xl text-orange-400' />
-                </motion.div>
+          </motion.div>
+        ))}
 
-                <motion.div
-                    variants={iconVariants(4)}
-                    initial='initial'
-                    animate='animate'
-                    className='rounded-2xl border-4 border-neutral-800 p-4'>
-                    < DiPython className='text-7xl text-sky-700' />
-                </motion.div>
+      </motion.div>
 
-                   <motion.div
-                    variants={iconVariants(4)}
-                    initial='initial'
-                    animate='animate'
-                    className='rounded-2xl border-4 border-neutral-800 p-4'>
-                    < TbCloudComputing
-                     className='text-7xl text-sky-700' />
-                </motion.div>
-                   <motion.div
-                    variants={iconVariants(4)}
-                    initial='initial'
-                    animate='animate'
-                    className='rounded-2xl border-4 border-neutral-800 p-4'>
-                    < FaSalesforce
-                     className='text-7xl text-sky-700' />
-                </motion.div>
-            </motion.div>
-        </div>
-    )
+    </motion.section>
+  )
 }
 
 export default Technology

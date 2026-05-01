@@ -1,54 +1,134 @@
-
 import React from 'react'
-import { PROJECTS } from '../constants';
+import { PROJECTS } from '../constants'
 import { motion } from 'framer-motion'
+
+// Smooth animation
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
+}
+
+// Stagger container
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+}
 
 const Projects = () => {
   return (
-    <div className='border-b border-neutral-900 pb-4'>
-      <motion.h1
-        whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 0.5 }}
-        className='my-20 text-center text-4xl'>Projects</motion.h1>
-      <div>
-        {PROJECTS.map((project, index) => (
-          <div key={index} className='mb-8 flex flex-wrap lg:justify-center'>
+    <motion.section
+      id="projects"
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, margin: "-80px" }} // ✅ repeat animation
+      className="py-16 border-b border-neutral-800"
+    >
 
-            <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: -100 }}
-              transition={{ duration: 1 }}
-              className='w-full lg:w-1/4 flex justify-center lg:justify-start mb-4 lg:mb-0'>
-              <img src={project.image} width={150} height={150} alt={project.title} className='mb-6 rounded' />
-            </motion.div>
-            <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: 100 }}
-              transition={{ duration: 1 }}
-              className='w-full max-w-xl lg:w-3/4'>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className='text-lg font-semibold text-purple-500 hover:underline'>
-                {project.title}
-              </a>
-              <p className='mb-4 text-neutral-400'>{project.description}</p>
-              {project.technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className='mr-2 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-900'
+      {/* Heading */}
+      <motion.h1
+        variants={fadeInUp}
+        className="text-center text-3xl font-semibold mb-4"
+      >
+        My <span className="text-purple-400">Projects</span>
+      </motion.h1>
+
+      {/* Subtitle */}
+      <motion.p
+        variants={fadeInUp}
+        className="text-center text-sm text-neutral-400 mb-10"
+      >
+        A selection of my recent work showcasing full-stack development
+      </motion.p>
+
+      {/* Grid */}
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, margin: "-80px" }} // ✅ repeat stagger
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
+      >
+
+        {PROJECTS.map((project, index) => (
+          <motion.div
+            key={index}
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }} // ✅ each card re-animates
+            whileHover={{
+              y: -5,
+              scale: 1.01,
+            }}
+            transition={{
+              duration: 0.3,
+              ease: "easeOut",
+            }}
+            className="group bg-neutral-900 rounded-lg overflow-hidden border border-neutral-800 hover:border-purple-500/40 transition"
+          >
+
+            {/* Image */}
+            <div className="relative overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-32 object-cover group-hover:scale-105 transition duration-500 ease-out"
+              />
+
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 ease-out flex items-center justify-center">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1 text-xs bg-purple-600 rounded-md hover:bg-purple-700 transition"
                 >
-                  {tech}
-                </span>
-              ))}
-            </motion.div>
-          </div>
+                  View
+                </a>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-3">
+              <h3 className="text-base font-semibold mb-1 group-hover:text-purple-400 transition">
+                {project.title}
+              </h3>
+
+              <p className="text-xs text-neutral-400 mb-2 leading-relaxed line-clamp-2">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-1">
+                {project.technologies.slice(0, 3).map((tech, i) => (
+                  <span
+                    key={i}
+                    className="text-[9px] bg-purple-500/10 text-purple-400 px-2 py-[1px] rounded"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+          </motion.div>
         ))}
-      </div>
-    </div>
+
+      </motion.div>
+    </motion.section>
   )
 }
 
-export default Projects;
+export default Projects
