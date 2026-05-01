@@ -14,53 +14,40 @@ const sections = [
 ];
 
 const Navbar = () => {
-
-  return (
-    <nav className='mb-20 flex items-center justify-between py-6'>
-      <div className='flex flex-shrink-0 items-center '>
-
-        <h1><b className="text-4xl md:text-5xl font-bold font-[cursive] text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 tracking-wide drop-shadow-md">KK Coder</b></h1>
-      </div>
-      <div className='m-8 flex items-center justify-center gap-4 text-2xl'>
-        <a href='https://www.linkedin.com/in/khushbu-kumari-b727b525a/' target='_blank' rel='noopener noreferrer'>
-          <FaLinkedin className='hover:text-blue-700' />
-        </a>
-        <a href='https://github.com/Khushbu8130' target='_blank' rel='noopener noreferrer'>
-          <FaGithub className='hover:text-gray-700' />
-        </a>
-        <a href='https://www.instagram.com/' target='_blank' rel='noopener noreferrer'>
-          <FaInstagram className='hover:text-pink-600' />
-        </a>
-        <a href='https://twitter.com/' target='_blank' rel='noopener noreferrer'>
-          <FaSquareXTwitter className='hover:text-blue-500' />
-        </a>
-
   const [active, setActive] = useState("hero");
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    let scrollTimeout;
+    
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      sections.forEach((id) => {
-        const section = document.getElementById(id);
-        if (section) {
-          const top = section.offsetTop - 120;
-          const height = section.offsetHeight;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        sections.forEach((id) => {
+          const section = document.getElementById(id);
+          if (section) {
+            const top = section.offsetTop - 120;
+            const height = section.offsetHeight;
 
-          if (
-            window.scrollY >= top &&
-            window.scrollY < top + height
-          ) {
-            setActive(id);
+            if (
+              window.scrollY >= top &&
+              window.scrollY < top + height
+            ) {
+              setActive(id);
+            }
           }
-        }
-      });
+        });
+      }, 50);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, []);
 
   return (

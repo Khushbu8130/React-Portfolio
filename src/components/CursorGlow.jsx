@@ -1,14 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const CursorGlow = () => {
   const [pos, setPos] = useState({ x: 0, y: 0 });
+  const mouseTimeoutRef = useRef(null);
 
   useEffect(() => {
     const move = (e) => {
+      // Throttle: only update position every 16ms (60fps)
+      if (mouseTimeoutRef.current) return;
+
       setPos({ x: e.clientX, y: e.clientY });
+
+      mouseTimeoutRef.current = setTimeout(() => {
+        mouseTimeoutRef.current = null;
+      }, 16);
     };
+
     window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
+    return () => {
+      window.removeEventListener("mousemove", move);
+      if (mouseTimeoutRef.current) clearTimeout(mouseTimeoutRef.current);
+    };
   }, []);
 
   return (
