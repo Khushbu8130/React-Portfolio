@@ -118,7 +118,7 @@ export const ACHIEVEMENTS = [
   {
     title: "DSA Problem Solving",
     description: "Solved 600+ problems on coding platforms.",
-    technologies: ["DSA", "LeetCode", "CodeChef"],
+    technologies: ["DSA", "LeetCode", "GFG"],
   },
   {
     title: "Open Source",
