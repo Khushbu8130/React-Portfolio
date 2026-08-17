@@ -3,6 +3,7 @@ import project8 from "../assets/Projects/project8.webp";
 import project5 from "../assets/Projects/project5.png";
 import project6 from "../assets/Projects/project6.jpg";
 import project3 from "../assets/Projects/project3.jpg";
+import project9 from "../assets/Projects/project9.jpg";
 
 import cloudImg from "../assets/certificates/cloudImg.jpg";
 import fullstackImg from "../assets/certificates/fullstackImg.webp";
@@ -31,6 +32,21 @@ export const EXPERIENCES = [
 
 // PROJECTS
 export const PROJECTS = [
+
+ {
+  title: "CogniFlow AI",
+  image: project9,
+  description:
+    "AI-powered productivity and learning platform with tools for learning, document generation, and intelligent assistance.",
+  technologies: [
+    "React",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "AI APIs",
+  ],
+  link: "https://cogniflow-ai-frontend.onrender.com/",
+},
   {
     title: "GitHub Project Analyzer",
     image: project8,
